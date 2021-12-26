@@ -135,7 +135,7 @@ $ python Text_detection.py
 $ python data_process.py
 ```
 - Scene_Text_Detection \
-There are two models for the Scene_Text_Detection task, ROI transformation and YoloV5. You could use the follow script to train these two models.
+There are two models for the scene text detection task: ROI transformation and YoloV5. You could use the follow script to train these two models.
 ```bash
 $ cd ./Scene_Text_Detection/yolov5-master # YoloV5
 $ python train.py
