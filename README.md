@@ -131,7 +131,7 @@ $ python3 Text_detection.py
 - If you would like to visualize the bbox detected by yoloV5, you can use the function `public_crop()` in the script `../../data_process.py` to extract the bbox from images.
 
 ### Training
-- You should first download the dataset provided by [official](https://tbrain.trendmicro.com.tw/Competitions/Details/19), then put the data in the path `'./dataset/'`. After that, you could use the following script to transform the original data to the training format.
+- You should first download the dataset provided by [official](https://tbrain.trendmicro.com.tw/Competitions/Details/19), then put the data in the path `'../dataset/'`. After that, you could use the following script to transform the original data to the training format.
 ```bash
 $ python3 data_process.py
 ```
