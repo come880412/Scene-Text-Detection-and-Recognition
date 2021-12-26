@@ -1,9 +1,0 @@
-# train and val data as 1) directory: path/images/, 2) file: path/images.txt, or 3) list: [path1/images/, path2/images/]
-train: ../../../dataset/TextYolo/train/  # 118287 images
-val: ../../../dataset/TextYolo/Val/  # 5000 images
-
-# number of classes
-nc: 2
-
-# class names
-names: ['background','Text']
