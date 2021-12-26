@@ -1,7 +1,7 @@
 # Scene-Text-Detection-and-Recognition (Pytorch)
 - Competition URL: https://tbrain.trendmicro.com.tw/Competitions/Details/19 (Private 6th place)
 
-# 1.Proposed Method
+# 1. Proposed Method
 ## The models
 Our model comprises two parts: scene text detection and scene text recognition. the descriptions of these two models are as follow:
 
@@ -24,7 +24,7 @@ The whole training process is shown in the figure below.
 
 ## Data augmentation
 - **Random Scale Resize** \
-We found that the sizes of the images in the training data are different. Therefore, if we resize the small image to the large, the features will almost be lost. We apply the random scale resize algorithm to obtain the low-resolution image from the high-resolution image. The visualization results are demonstrated as follows.
+We found that the sizes of the images in the public dataset are different. Therefore, if we resize the small image to the large, most of the image features will be lost. To solve this problem, we apply the random scale resize algorithm to obtain the low-resolution image from the high-resolution image in the training phase. The visualization results are demonstrated as follows.
 
 | Original image | 72x72 --> 224x224 | 96x96 --> 224x224 | 121x121 --> 224x224 | 146x146 --> 224x224 | 196x196 --> 224x224 |
 |:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
@@ -38,13 +38,13 @@ In the training phase, the model's input is RGB channel. To enhance the reliabil
 |<img src="https://github.com/come880412/Scene-Text-Detection-and-Recognition/blob/main/images/data_augmentation/Original.png" width=50% height=50%>|<img src="https://github.com/come880412/Scene-Text-Detection-and-Recognition/blob/main/images/data_augmentation/brightness.png" width=35% height=35%>|<img src="https://github.com/come880412/Scene-Text-Detection-and-Recognition/blob/main/images/data_augmentation/contrast.png" width=40% height=40%>|<img src="https://github.com/come880412/Scene-Text-Detection-and-Recognition/blob/main/images/data_augmentation/saturation.png" width=37.5% height=37.5%>|<img src="https://github.com/come880412/Scene-Text-Detection-and-Recognition/blob/main/images/data_augmentation/hue.png" width=50% height=50%>|<img src="https://github.com/come880412/Scene-Text-Detection-and-Recognition/blob/main/images/data_augmentation/colorjitter.png" width=27.5% height=27.5%>|
 
 - **Random Rotaion** \
-After we observe the training data, we find that most of the images in training data are square-shaped (original image), while some of the testing data is a little skewed. The visualization results are demonstrated as follows.
+After we observe the training data, we found that most of the images in training data are square-shaped (original image), while some of the testing data is a little skewed. Therefore, we apply the random rotation algorithm to make the model more generalization. The visualization results are demonstrated as follows.
 
 | Original image | Random Rotation | Random Horizontal Flip | Both |
 |:----------:|:----------:|:----------:|:----------:|
 |<img src="https://github.com/come880412/Scene-Text-Detection-and-Recognition/blob/main/images/data_augmentation/Original.png" width=50% height=50%>|<img src="https://github.com/come880412/Scene-Text-Detection-and-Recognition/blob/main/images/data_augmentation/Random_Rotation.png" width=50% height=50%>|<img src="https://github.com/come880412/Scene-Text-Detection-and-Recognition/blob/main/images/data_augmentation/Random_Horizontal_Flip.png" width=50% height=50%>|<img src="https://github.com/come880412/Scene-Text-Detection-and-Recognition/blob/main/images/data_augmentation/Random_Rotation_Horizontal.png" width=50% height=50%>|
 
-# Demo
+# 2. Demo
 - **Predicted results** \
 Before we recognize the string bbox detected by YoloV5, we filter out the bbox with a size less than 45\*45. Because the image resolution of a bbox with a size less than 45\*45 is too low to recognize the correct string.
 
@@ -56,9 +56,8 @@ Before we recognize the string bbox detected by YoloV5, we filter out the bbox w
 |<img src="https://github.com/come880412/Scene-Text-Detection-and-Recognition/blob/main/Scene_Text_Detection/yolov5-master/example/img_21030.jpg" width=60% height=60%>|<img src="https://github.com/come880412/Scene-Text-Detection-and-Recognition/blob/main/images/detection/img_21030.jpg" width=60% height=60%>|西門町<br>楊<br>排骨酥麵<br>非常感謝<br>tvbs食尚玩家<br>蘋果日報<br>壹週刊<br>財訊<br>錢櫃雜誌<br>聯合報<br>飛碟電台<br>等報導<br>排骨酥專賣店<br>西門町<br>楊<br>排骨酥麵<br>排骨酥麵<br>嘉義店|
 |<img src="https://github.com/come880412/Scene-Text-Detection-and-Recognition/blob/main/Scene_Text_Detection/yolov5-master/example/img_21023.jpg" width=60% height=60%>|<img src="https://github.com/come880412/Scene-Text-Detection-and-Recognition/blob/main/images/detection/img_21023.jpg" width=60% height=60%>|永晟<br>電動工具行<br>492913338|
 
-- **Attention maps of ViT** \
+- **Attention maps in ViT** \
 We also visualize the attention maps in ViT, to check whether the model focus on the correct location of the image. The visualization results are demonstrated as follows.
-
 
 | Original image | Attention map |
 |:--------------------:|:--------------------:|
@@ -72,9 +71,9 @@ We also visualize the attention maps in ViT, to check whether the model focus on
 |<img src="https://github.com/come880412/Scene-Text-Detection-and-Recognition/blob/main/images/att_map/ori_img_10.png" width=60% height=60%>|<img src="https://github.com/come880412/Scene-Text-Detection-and-Recognition/blob/main/images/att_map/att_img_10.png" width=70% height=70%>|
 |<img src="https://github.com/come880412/Scene-Text-Detection-and-Recognition/blob/main/images/att_map/ori_img_11.png" width=60% height=60%>|<img src="https://github.com/come880412/Scene-Text-Detection-and-Recognition/blob/main/images/att_map/att_img_11.png" width=70% height=70%>|
 
-# Competition Results
-- Public Scores \
-We coduct extensive experiments, The results are demonstrated below. From the results, we can see the improvement of the results by adding each module at each stage. At first, we only employ YoloV5 to detect all the ROI of images, and the detection result is not good enough. We also compare the result of ViT with data augmentation or not, the results show that our data augmentation is effective to solve this task (compare the last row and the sixth row). In addition, we filter out the bbox with a size less than 45\*45 since the resolution of bbox is too low to recognize the correct strings.
+# 3. Competition Results
+- **Public Scores** \
+We conducted extensive experiments, and The results are demonstrated below. From the results, we can see the improvement of the results by adding each module at each stage. At first, we only employed YoloV5 to detect all the ROI in the images, and the result of detection is not good enough. We also compare the result of ViT with data augmentation or not, the results show that our data augmentation is effective to solve this task (compare the last row and the sixth row). In addition, we filter out the bbox with a size less than 45\*45 since the resolution of bbox is too low to recognize the correct strings.
 
 | Models(Detection/Recognition) | Final score | Precision | Recall |
 |:----------:|:----------:|:----------:|:----------:|
@@ -87,7 +86,7 @@ We coduct extensive experiments, The results are demonstrated below. From the re
 | YoloV5(L) + <br>ROI_transformation(SEResnet50) + <br>reduce overlap bbox / ViT(aug) + filter bbox(50 \* 50)|      0.79431|       0.9338|       0.8991|
 | YoloV5(L) + <br>ROI_transformation(SEResnet50) + <br>reduce overlap bbox / ViT(no aug) + filter bbox(45 \* 45)|      0.73802|       0.9335|       0.9011|
 
-- Private Scores
+- **Private Scores**
 
 | Models(Detection/Recognition) | Final score | Precision | Recall |
 |:----------:|:----------:|:----------:|:----------:|
@@ -95,7 +94,7 @@ We coduct extensive experiments, The results are demonstrated below. From the re
 | YoloV5(L) + <br>ROI_transformation(SEResnet50) + <br>reduce overlap bbox / ViT(aug) + filter bbox(45 \* 45)|      **0.7833**|       **0.9323**|       **0.8968**|
 | YoloV5(L) + <br>ROI_transformation(SEResnet50) + <br>reduce overlap bbox / ViT(aug) + filter bbox(50 \* 50)|      0.7830|       0.9325|       0.8944|
 
-# 4.Computer Equipment
+# 4. Computer Equipment
 - System: Windows10、Ubuntu20.04
 - Pytorch version: Pytorch 1.7 or higher
 - Python version: Python 3.6
@@ -109,7 +108,7 @@ CPU: Intel(R) Xeon(R) Gold 5218 CPU @ 2.30GHz
 RAM: 256GB  
 GPU: NVIDIA GeForce RTX 3090 24GB * 2
 
-# Getting Started
+# 5. Getting Started
 - Clone this repo to your local
 ``` bash
 git clone https://github.com/come880412/Scene-Text-Detection-and-Recognition.git
