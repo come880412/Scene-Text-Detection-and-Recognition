@@ -3,16 +3,16 @@
 
 # 1.Proposed Method
 ## The models
-Our model comprises two parts: Scene text detection and Scene text recognition. the descriptions of these two models are as follow:
+Our model comprises two parts: scene text detection and scene text recognition. the descriptions of these two models are as follow:
 
-- **Scene text detection** \
-We employ YoloV5 [1] to detect the ROI (Region Of Interest) from an image and Resnet50 [2] to implement the ROI transformation. This algorithm transforms the coordinates detected by YoloV5 to the proper location, which fits the text well. YoloV5 can detect all ROIs that might be strings while ROI transformation can make the bbox more fit the region of the string. The visualization result is illustrated below, where the bbox of the dark green is ROI detected by YoloV5 and the bbox of the red is ROI after ROI transformation.
+- **Scene Text Detection** \
+We employ YoloV5 [1] to detect the ROI (Region Of Interest) from an image and Resnet50 [2] to implement the ROI transformation algorithm. This algorithm transforms the coordinates detected by YoloV5 to the proper location, which fits the text well. YoloV5 can detect all ROIs that might be strings while ROI transformation can make the bbox more fit the region of the string. The visualization result is illustrated below, where the bbox of the dark green is ROI detected by YoloV5 and the bbox of the red is ROI after ROI transformation.
 <p align="center">
 <img src="https://github.com/come880412/Scene-Text-Detection-and-Recognition/blob/main/images/ROI_transformation_visualization.png" width=50% height=50%>
 </p>
 
-- **Scene text recognition** \
-We employ ViT [3] to recognize the string of bbox detected by YoloV5 since our task is not a single text recognition. The transformer-based model achieves the state-of-the-art performance in Natural Language Processing (NLP). In this task, we predict the string according to the given image. Therefore, through the attention mechanism, we can make the model pay attention to the words that need to be output at the moment. The model architecture is demonstrated below.
+- **Scene Text Recognition** \
+We employ ViT [3] to recognize the string of bbox detected by YoloV5 since our task is not a single text recognition. The transformer-based model achieves the state-of-the-art performance in Natural Language Processing (NLP). The attention mechanism can make the model pay attention to the words that need to be output at the moment. The model architecture is demonstrated below.
 <p align="center">
 <img src="https://github.com/come880412/Scene-Text-Detection-and-Recognition/blob/main/images/ViT.jpg" width=50% height=50%>
 </p>
