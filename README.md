@@ -116,7 +116,7 @@ cd Scene-Text-Detection-and-Recognition
 ```
 ### Download pretrained models
 - **Scene Text Detection** \
-Please download pretrained models from [Scene_Text_Detection](https://drive.google.com/drive/folders/1MJmNxNav8SFE83jlbe5snycYQ7j2tbcn?usp=sharing). There are three folders, "ROI_transformation", "yolo_models" and "yolo_weight". First, please put the weights in "ROI_transformation" to the path `./Scene_Text_Detection/Tranform_card/models/`. Second, please put all the models in "yolo_models" to the current path. Finally, please put the weight in "yolo_weight" to the path `./Scene_Text_Detection/yolov5-master/runs/train/expl/weights/`.
+Please download pretrained models from [Scene_Text_Detection](https://drive.google.com/drive/folders/1MJmNxNav8SFE83jlbe5snycYQ7j2tbcn?usp=sharing). There are three folders, "ROI_transformation", "yolo_models" and "yolo_weight". First, please put the weights in "ROI_transformation" to the path `./Scene_Text_Detection/Tranform_card/models/`. Second, please put all the models in "yolo_models" to the `./Scene_Text_Detection/yolov5-master/`. Finally, please put the weight in "yolo_weight" to the path `./Scene_Text_Detection/yolov5-master/runs/train/expl/weights/`.
 
 - **Scene Text Recogniton** \
 Please download pretrained models from [Scene_Text_Recognition](https://drive.google.com/drive/folders/1DBO-L-00EA00rAZgV1dIBLhR-Q4kOmmA?usp=sharing). There are two files in this foler, "best_accuracy.pth" and "character.txt". Please put the files to the path `./Scene_Text_Recogtion/saved_models/`.
@@ -124,7 +124,7 @@ Please download pretrained models from [Scene_Text_Recognition](https://drive.go
 ### Inference
 - You should first download the pretrained models and change your path to `./Scene_Text_Detection/yolov5-master/`
 ```bash
-$ python3 Text_detection.py
+$ python Text_detection.py
 ```
 - The result will be saved in the path `'../output/'`. Where the folder "example" is the images detected by YoloV5 and after ROI transformation, the file "example.csv" records the coordinates of the bbox, starting from the upper left corner of the coordinates clockwise, respectively (x1, y1), (x2, y2), (x3, y3), and (x4, y4), and the file "exmaple_45.csv" is the predicted result.
 - If you would like to visualize the bbox detected by yoloV5, you can use the function `public_crop()` in the script `../../data_process.py` to extract the bbox from images.
@@ -132,22 +132,22 @@ $ python3 Text_detection.py
 ### Training
 - You should first download the dataset provided by [official](https://tbrain.trendmicro.com.tw/Competitions/Details/19), then put the data in the path `'../dataset/'`. After that, you could use the following script to transform the original data to the training format.
 ```bash
-$ python3 data_process.py
+$ python data_process.py
 ```
 - Scene_Text_Detection \
 There are two models for the Scene_Text_Detection task, ROI transformation and YoloV5. You could use the follow script to train these two models.
 ```bash
 $ cd ./Scene_Text_Detection/yolov5-master # YoloV5
-$ python3 train.py
+$ python train.py
 
 $ cd ../Tranform_card/ # ROI Transformation
-$ python3 Trainer.py
+$ python Trainer.py
 ```
 
 - Scene_Text_Recognition
 ```bash
 $ cd ./Scene_Text_Recogtion # ViT for text recognition
-$ python3 train.py
+$ python train.py
 ```
 
 # References
