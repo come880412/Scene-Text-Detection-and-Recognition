@@ -263,14 +263,14 @@ def ViT_train_data():
         json.dump(train_save_dict, f, ensure_ascii=False)
     with open(os.path.join(save_file_path, 'val.json'), 'w', encoding='utf-8') as f:
         json.dump(val_save_dict, f, ensure_ascii=False)
-    print('training data:', len(train_save_dict['annotations']))
-    print('validation data:', len(val_save_dict['annotations']))
+    # print('training data:', len(train_save_dict['annotations']))
+    # print('validation data:', len(val_save_dict['annotations']))
     np.savetxt(os.path.join(save_file_path, 'character.txt'), character_list, fmt='%s', encoding='utf-8')
 
 def public_crop():
-    public_csv_path = './yolo/dataset/privateL1024_0404_se.csv'
-    public_img_path = '../dataset/private'
-    save_path = '../dataset/publicL1024_0404_se'
+    public_csv_path = './Scene_Text_Detection/output/example.csv'
+    public_img_path = './Scene_Text_Detection/yolov5-master/example'
+    save_path = './Scene_Text_Detection/output/example_crop'
 
     os.makedirs(save_path, exist_ok=True)
     public_csv = np.loadtxt(public_csv_path, delimiter=',', dtype=np.str)
