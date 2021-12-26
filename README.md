@@ -13,9 +13,9 @@ We employ YoloV5 [1] to detect the ROI (Region Of Interest) from an image and Re
 
 - **Scene text recognition** \
 We employ ViT [3] to recognize the string of bbox detected by YoloV5 since our task is not a single text recognition. The transformer-based model achieves the state-of-the-art performance in Natural Language Processing (NLP). In this task, we predict the string according to the given image. Therefore, through the attention mechanism, we can make the model pay attention to the words that need to be output at the moment. The model architecture is demonstrated below.
-<p align="center">
+<!-- <p align="center">
 <img src="https://github.com/come880412/Scene-Text-Detection-and-Recognition/blob/main/images/ViT.jpg" width=50% height=50%>
-</p>
+</p> -->
 
 The whole training process is shown in the figure below.
 <p align="center">
