@@ -408,9 +408,9 @@ def detect():
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     # Path
-    parser.add_argument('--weights', nargs='+', type=str, default='./runs/train/expl_String1024/weights/best.pt', help='path to the model of YoloV5')
+    parser.add_argument('--weights', nargs='+', type=str, default='./runs/train/expl/weights/best.pt', help='path to the model of YoloV5')
     parser.add_argument('--ROI_transformation', default='../Tranform_card/models/best_ser502.pkl', help='Path to the model of ROI_transformation ')
-    parser.add_argument('--ViT_load', default='../../Scene_classification/saved_models', help='Path to the model of ViT')
+    parser.add_argument('--ViT_load', default='../../Scene_Text_Recogtion/saved_models', help='Path to the model of ViT')
     parser.add_argument('--data_path', default="./example", help='Path to the testing images')
     parser.add_argument('--output_path', default="../output", help='Path to the output images and csv')
 
