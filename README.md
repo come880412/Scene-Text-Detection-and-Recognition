@@ -1,5 +1,5 @@
 # Scene-Text-Detection-and-Recognition (Pytorch)
-- Competition URL: https://tbrain.trendmicro.com.tw/Competitions/Details/19 (Private 6th place)
+- Competition URL: https://tbrain.trendmicro.com.tw/Competitions/Details/19 (Private 6th place)(學生組 優良獎)
 
 # 1. Proposed Method
 ## The models
